@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use common\models\query\UserQuery;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
@@ -22,6 +23,7 @@ use yii\web\IdentityInterface;
  * @property integer $created_at
  * @property integer $updated_at
  * @property string $password write-only password
+ * @property string $description
  */
 class User extends ActiveRecord implements IdentityInterface
 {
@@ -54,8 +56,9 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            ['status', 'default', 'value' => self::STATUS_INACTIVE],
-            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
+            ['email', 'required'],
+            ['email', 'email'],
+            ['description', 'string'],
         ];
     }
 
@@ -209,5 +212,13 @@ class User extends ActiveRecord implements IdentityInterface
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
+    }
+
+    /**
+     * @return UserQuery
+     */
+    public static function find(): UserQuery
+    {
+        return new UserQuery(get_called_class());
     }
 }
