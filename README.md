@@ -7,6 +7,11 @@ php init
 php yii migrate
 ~~~
 
+для генерации в common/rbac/items :
+~~~
+php yii rbac/init
+~~~
+
 ### Apache2
 
 ~~~
