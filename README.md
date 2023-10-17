@@ -70,6 +70,22 @@ sudo nano /etc/apache2/sites-available/yii-api-1.conf
         # Allow from all
     </Directory>
 </VirtualHost>
+
+<VirtualHost *:80>
+    ServerName api.yii-api-1.test
+    DocumentRoot "/var/www/yii-api-1/api/web/"
+       
+    <Directory "/var/www/yii-api-1/api/web/">
+        RewriteEngine on
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteCond %{REQUEST_FILENAME} !-d
+        RewriteRule . index.php
+
+        DirectoryIndex index.php
+
+        Require all granted
+    </Directory>
+</VirtualHost>
 ~~~
 
 ~~~
