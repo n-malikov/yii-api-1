@@ -1,9 +1,9 @@
 <?php
 $params = array_merge(
-    require(__DIR__ . '/../../common/config/params.php'),
-    require(__DIR__ . '/../../common/config/params-local.php'),
-    require(__DIR__ . '/params.php'),
-    require(__DIR__ . '/params-local.php')
+    require __DIR__ . '/../../common/config/params.php',
+    require __DIR__ . '/../../common/config/params-local.php',
+    require __DIR__ . '/params.php',
+    require __DIR__ . '/params-local.php'
 );
 
 return [
@@ -15,7 +15,7 @@ return [
     'components' => [
         'request' => [
             'parsers' => [
-                'application/json' => 'yii\web\JsonParser',
+                'application/json' => 'yii\web\JsonParser', // типы парсеров, с которыми будет работать API
                 'application/xml' => 'yii\web\XmlParser',
             ],
         ],
@@ -23,7 +23,7 @@ return [
             'formatters' => [
                 'json' => [
                     'class' => 'yii\web\JsonResponseFormatter',
-                    'prettyPrint' => YII_DEBUG,
+                    'prettyPrint' => YII_DEBUG, // чтоб красиво возвращал ошибки
                     'encodeOptions' => JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE,
                 ],
             ],
@@ -37,7 +37,7 @@ return [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
                 [
-                    'class' => 'yii\log\FileTarget',
+                    'class' => \yii\log\FileTarget::class,
                     'levels' => ['error', 'warning'],
                 ],
             ],

@@ -8,6 +8,7 @@ use api\models\LoginForm;
 
 class SiteController extends Controller
 {
+    // rateLimiter - ограничение по запросам в секунду
     public function actionIndex()
     {
         return 'api';
@@ -15,6 +16,11 @@ class SiteController extends Controller
 
     public function actionLogin()
     {
+        //if () {
+        //    Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        //} elseif () {
+        //    Yii::$app->response->format = \yii\web\Response::FORMAT_XML;
+        //}
         $model = new LoginForm();
         $model->load(Yii::$app->request->bodyParams, '');
         if ($token = $model->auth()) {

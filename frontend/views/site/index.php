@@ -11,6 +11,12 @@ $this->title = 'My Yii Application';
             <p class="fs-5 fw-light">You have successfully created your Yii-powered application.</p>
             <p><a class="btn btn-lg btn-success" href="https://www.yiiframework.com">Get started with Yii</a></p>
         </div>
+
+        <div class="row">
+            <p>api/tests/api.suite.yml - главный конфиг по тестам</p>
+            <p>не забываем чтоб подобные тесты работали нужно установить доп модули (эти команды можно искать по проекту):</p>
+            <pre>composer require codeception/module-rest --dev</pre>
+        </div>
     </div>
 
     <div class="body-content">
