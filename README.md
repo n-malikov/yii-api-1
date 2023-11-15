@@ -12,6 +12,17 @@ php yii migrate
 php yii rbac/init
 ~~~
 
+### Тесты
+
+генерация в api/tests/_support/_generated/ методов по api/tests/api.suite.yml  
+~~~
+php vendor/bin/codecept build
+~~~
+
+~~~
+vendor/bin/codecept run -- -c api
+~~~
+
 ### Apache2
 
 ~~~

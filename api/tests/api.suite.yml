@@ -1,8 +1,9 @@
-class_name: ApiTester
+suite_namespace: api\tests\api
+actor: ApiTester
 modules:
    enabled:
-       - REST:
-           depends: PhpBrowser
+       - REST: # composer require codeception/module-rest --dev
+           depends: PhpBrowser # composer require codeception/module-phpbrowser --dev
            url: 'http://127.0.0.1:8080/index-test.php'
            part: [json]
        - Yii2:
